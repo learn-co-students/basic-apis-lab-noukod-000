@@ -1,3 +1,21 @@
+<!-- <h1>Search Github Repositories</h1>
+<%= form_tag '/search' do %>
+  <%= label_tag :query %>
+  <%= text_field_tag :query %>
+  <%= submit_tag "Search Github!" %>
+<% end %>
+<div>
+<% if @repos %>
+<ul>
+  <% @repos.each do |repo| %>
+    <li><%= repo["name"] %><br>
+        <%= link_to repo["html_url"], repo["html_url"] %><br>
+        <%= repo["description"] %>
+    </li>
+  <% end %>
+</ul>
+<% end %>
+</div> -->
 <h1>Search Github Repositories</h1>
 <%= form_tag '/search' do %>
   <%= label_tag :query %>
@@ -5,3 +23,17 @@
   <%= submit_tag "Search Github!" %>
 <% end %>
 
+
+<div>
+  <% if @repos %>
+    <ul>
+      <% @repos.each do |repo| %>
+    <li>
+      Name: <%= repo["name"] %><br />
+      URL: <a href="<%= repo["html_url"] %>"><%= repo["html_url"] %></a><br />
+      Description: <%= repo["description"] %><br /><br />
+    </li>
+    <% end %>
+    </ul>
+  <% end %>
+</div>
